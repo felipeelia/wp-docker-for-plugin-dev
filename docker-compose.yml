@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  wordpress:
+    build: ./
+    links:
+      - mysql
+    ports:
+      - 80:80
+    volumes:
+      - ../git-plugins:/var/www/html/plugins
+      - ./vendor:/var/www/html/vendor
+      - ./docker/wp-config.d:/var/www/html/wp-config.d
+
+  mysql:
+    image: mariadb
+    volumes:
+      - ./db_data:/var/lib/mysql
+    ports:
+     - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+volumes:
+    db_data:

@@ -1,0 +1,23 @@
+{
+    "name": "felipeelia/base-worpdress-repository",
+    "description": "Basic WordPress Repository",
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/contact-form-7": "5.*"
+    },
+    "require-dev":{
+        "wpackagist-plugin/query-monitor":"*",
+        "wpackagist-plugin/wp-mail-smtp": "^1.2"
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/plugins/{$name}/": ["type:wordpress-plugin"],
+            "vendor/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    }
+}
